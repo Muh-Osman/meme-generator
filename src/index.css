@@ -58,7 +58,7 @@ form {
 }
 
 input {
-  height: 35px;
+  height: 45px;
   width: 49%;
   border: 1px solid #D5D4D8;
   border-radius: 5px;
@@ -86,7 +86,7 @@ button {
   flex-basis: 100%;
   background: linear-gradient(90.41deg, #711F8D 1.14%, #A818DA 100%);
   color: #fff;
-  height: 40px;
+  height: 45px;
   border-radius: 5px;
   border: none;
   cursor: pointer;
