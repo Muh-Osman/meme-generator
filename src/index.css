@@ -52,13 +52,13 @@ main {
 form {
   display: flex;
   flex-wrap: wrap;
-  gap: 2%;
+  justify-content: space-between;
   margin-bottom: 35px;
 }
 
 input {
   height: 35px;
-  flex-basis: 49%;
+  width: 49%;
   border: 1px solid #D5D4D8;
   border-radius: 5px;
   text-indent: 10px;
@@ -70,7 +70,7 @@ input:focus-visible {
 }
 
 button {
-  flex: 1;
+  flex-basis: 100%;
   background: linear-gradient(90.41deg, #711F8D 1.14%, #A818DA 100%);
   color: #fff;
   height: 40px;
@@ -90,6 +90,7 @@ button {
   font-weight: 800;
   text-transform: uppercase;
   -webkit-text-stroke: 2px #000;
+  text-align: center;
 }
 
 img {
@@ -107,5 +108,3 @@ img {
   position: absolute;
   bottom: 25px;
 }
-
-
