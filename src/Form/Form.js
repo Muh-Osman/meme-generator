@@ -1,35 +1,41 @@
-// import pic from "../Assets/download.jpg";
 import { useState, useEffect } from "react";
 
 const Form = () => {
-  // Save input value to show it in image
-  const [upValue, setUpValue] = useState("");
-  const [downValue, setDownValue] = useState("");
-
-  // Save image url
-  const [imgUrl, setimgUrl] = useState("");
-
   // Prevent refresh page after submit the form
   const submit = (e) => {
     e.preventDefault();
   };
 
-  // Generate random image
+  const [meme, setMeme] = useState({
+    topText: "",
+    bottomText: "",
+    randomImage: "https://i.imgflip.com/1ur9b0.jpg",
+  });
+
+  const [allMemes, setAllMemes] = useState([]);
+
   useEffect(() => {
     fetch("https://api.imgflip.com/get_memes")
-      .then((response) => response.json())
-      .then((e) => {
-        const memesArray = e.data.memes;
-        const randomNum = Math.floor(Math.random() * memesArray.length);
-        setimgUrl(memesArray[randomNum].url);
-
-        function generateImage() {
-          setimgUrl(memesArray[randomNum].url);
-        }
-
-        
-      });
+      .then((res) => res.json())
+      .then((data) => setAllMemes(data.data.memes));
   }, []);
+
+  function getMemeImage() {
+    const randomNumber = Math.floor(Math.random() * allMemes.length);
+    const url = allMemes[randomNumber].url;
+    setMeme((prevMeme) => ({
+      ...prevMeme,
+      randomImage: url,
+    }));
+  }
+
+  function handelChange(e) {
+    const { name, value } = e.target;
+    setMeme((prevMeme) => ({
+      ...prevMeme,
+      [name]: value,
+    }));
+  }
 
   return (
     <main>
@@ -37,32 +43,30 @@ const Form = () => {
         <input
           className="up"
           type="text"
+          name="topText"
           placeholder="Top Text"
-          onChange={(event) => setUpValue(event.target.value)}
+          onChange={handelChange}
+          value={meme.topText}
         ></input>
 
         <input
           className="down"
           type="text"
+          name="bottomText"
           placeholder="Bottom Text"
-          onChange={(event) => setDownValue(event.target.value)}
+          onChange={handelChange}
+          value={meme.bottomText}
         ></input>
 
-        <button type="submit" onClick={generateImage}>
+        <button type="submit" onClick={getMemeImage}>
           Get a new meme image 🖼️
         </button>
       </form>
 
       <div className="img-box">
-        <img src={imgUrl} />
-        <div
-          className="up-text"
-          dangerouslySetInnerHTML={{ __html: upValue }}
-        ></div>
-        <div
-          className="down-text"
-          dangerouslySetInnerHTML={{ __html: downValue }}
-        ></div>
+        <img src={meme.randomImage} />
+        <div className="up-text">{meme.topText}</div>
+        <div className="down-text">{meme.bottomText}</div>
       </div>
       <p>
         API used <a href="https://imgflip.com/api">imgflip</a>

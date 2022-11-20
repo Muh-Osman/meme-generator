@@ -78,13 +78,25 @@ input:focus-visible {
   outline: 1px solid #A626D3;
 }
 
-input:focus::placeholder {
-  transform: translateX(-110px);
+input.down:focus::placeholder {
+  transform: translateY(30px);
   opacity: 0;
   transition: .2s;
 }
 
-input:not(:focus)::placeholder {
+input.down:not(:focus)::placeholder {
+  transform: translateY(0px);
+  opacity: 1;
+  transition: .2s;
+}
+
+input.up:focus::placeholder {
+  transform: translateY(-30px);
+  opacity: 0;
+  transition: .2s;
+}
+
+input.up:not(:focus)::placeholder {
   transform: translateY(0px);
   opacity: 1;
   transition: .2s;
