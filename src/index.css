@@ -17,9 +17,8 @@ body {
   background-color: #E5E5E5;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+a {
+  text-decoration: none;
 }
 
 header {
@@ -53,6 +52,7 @@ main {
   height: 100%;
   padding: 35px;
   background-color: #fff;
+  position: relative;
 }
 
 form {
@@ -70,7 +70,6 @@ input {
   text-indent: 10px;
   margin-bottom: 15px;
   transition: .2s;
-  position: relative;
   font-weight: 600;
   font-size: 14px;
 }
@@ -81,11 +80,13 @@ input:focus-visible {
 
 input:focus::placeholder {
   transform: translateX(-110px);
+  opacity: 0;
   transition: .2s;
 }
 
 input:not(:focus)::placeholder {
   transform: translateY(0px);
+  opacity: 1;
   transition: .2s;
 }
 
@@ -104,6 +105,11 @@ button {
   cursor: pointer;
   font-size: 17px;
   font-weight: 500;
+  transition: .2s;
+}
+
+button:active {
+  scale: 0.96;
 }
 
 .img-box {
@@ -143,4 +149,14 @@ img {
     background-color: #fff;
   }
 
+}
+
+p {
+  position: absolute;
+  padding-top: 10px;
+  text-align: center;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  font-weight: 400;
 }
