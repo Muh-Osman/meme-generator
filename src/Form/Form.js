@@ -1,4 +1,4 @@
-import pic from "../Assets/download.jpg";
+// import pic from "../Assets/download.jpg";
 import { useState, useEffect } from "react";
 
 const Form = () => {
@@ -6,25 +6,30 @@ const Form = () => {
   const [upValue, setUpValue] = useState("");
   const [downValue, setDownValue] = useState("");
 
+  // Save image url
+  const [imgUrl, setimgUrl] = useState("");
+
   // Prevent refresh page after submit the form
   const submit = (e) => {
     e.preventDefault();
   };
-  
+
   // Generate random image
-  function generateImage() {
-    const memesArray = memsData.data.memes
-    const randomNum = Math.floor(Math.random() * memesArray.length)
-    const url = memesArray[randomNum].url
-  }
-  
   useEffect(() => {
-    // fetch('https://api.imgflip.com/get_memes')
-    .then((response) => response.json())
-    .then((data) => console.log(data));
+    fetch("https://api.imgflip.com/get_memes")
+      .then((response) => response.json())
+      .then((e) => {
+        const memesArray = e.data.memes;
+        const randomNum = Math.floor(Math.random() * memesArray.length);
+        setimgUrl(memesArray[randomNum].url);
 
+        function generateImage() {
+          setimgUrl(memesArray[randomNum].url);
+        }
+
+        
+      });
   }, []);
-
 
   return (
     <main>
@@ -49,7 +54,7 @@ const Form = () => {
       </form>
 
       <div className="img-box">
-        <img src={pic} />
+        <img src={imgUrl} />
         <div
           className="up-text"
           dangerouslySetInnerHTML={{ __html: upValue }}
