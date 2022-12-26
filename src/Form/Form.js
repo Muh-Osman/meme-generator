@@ -21,12 +21,28 @@ const Form = () => {
   }, []);
 
   function getMemeImage() {
+
+    const img = document.getElementById('img');
+    const btn = document.getElementById('btn');
+    btn.style.opacity = "0.7";
+    btn.innerHTML='Loading...'
+
     const randomNumber = Math.floor(Math.random() * allMemes.length);
     const url = allMemes[randomNumber].url;
+
     setMeme((prevMeme) => ({
       ...prevMeme,
       randomImage: url,
     }));
+
+    img.addEventListener("load", event => {
+      if (img.complete && img.naturalHeight !== 0) {
+        
+        btn.innerHTML='Get a new meme image 🖼️'
+        btn.style.opacity = "1";
+      }
+    });
+
   }
 
   function handelChange(e) {
@@ -58,13 +74,13 @@ const Form = () => {
           value={meme.bottomText}
         ></input>
 
-        <button type="submit" onClick={getMemeImage}>
+        <button id="btn" type="submit" onClick={getMemeImage}>
           Get a new meme image 🖼️
         </button>
       </form>
 
       <div className="img-box">
-        <img src={meme.randomImage} />
+        <img id="img" src={meme.randomImage} />
         <div className="up-text">{meme.topText}</div>
         <div className="down-text">{meme.bottomText}</div>
       </div>
