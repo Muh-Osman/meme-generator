@@ -36,11 +36,12 @@ const Form = () => {
     }));
 
     img.addEventListener("load", event => {
+      // Check if image loaded
       if (img.complete && img.naturalHeight !== 0) {
-        
         btn.innerHTML='Get a new meme image 🖼️'
         btn.style.opacity = "1";
       }
+
     });
 
   }
