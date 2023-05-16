@@ -180,11 +180,16 @@ p {
   padding: 3px;
   width: 35px;
   height: 35px;
-  background: #eee !important;
-  border-radius: 9px;
-  border-bottom-right-radius: 0px;
+  border-radius: 5px;
 }
 
+.download-btn svg{ 
+  fill: #fff;
+ }
+
 .download-btn:hover{
-  background: #c6c5c5 !important;
+  background: #fff !important;
+}
+.download-btn:hover svg{
+  fill: #A626D3;
 }

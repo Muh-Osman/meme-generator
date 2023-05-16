@@ -114,23 +114,24 @@ const Form = () => {
         <img id="img" src={meme.randomImage} alt="meme" />
         <div className="up-text">{meme.topText}</div>
         <div className="down-text">{meme.bottomText}</div>
+
+        <button className="download-btn" onClick={() => downloadMemeImg()}>
+            <svg
+            xmlns="http://www.w3.org/2000/svg"
+            enableBackground="new 0 0 30 30"
+            version="1.1"
+            viewBox="0 0 30 30"
+            xmlSpace="preserve"
+          >
+            <path d="M6 19v-2a1 1 0 00-2 0v2a1 1 0 002 0zM10 5a1 1 0 001 1h2a1 1 0 000-2h-2a1 1 0 00-1 1zM5 14a1 1 0 001-1v-2a1 1 0 00-2 0v2a1 1 0 001 1zM23 6h1v1a1 1 0 002 0V6a2 2 0 00-2-2h-1a1 1 0 000 2zM16 5a1 1 0 001 1h2a1 1 0 000-2h-2a1 1 0 00-1 1zM7 24H6v-1a1 1 0 00-2 0v1a2 2 0 002 2h1a1 1 0 000-2zM6 7V6h1a1 1 0 000-2H6a2 2 0 00-2 2v1a1 1 0 002 0zM24 11v2.001a1 1 0 002 0V11a1 1 0 00-2 0z"></path>
+            <g>
+              <path d="M25 16h-1.764a2 2 0 01-1.789-1.106l-.171-.342a1 1 0 00-.894-.552h-4.764a.998.998 0 00-.894.553l-.171.342A2.002 2.002 0 0112.764 16H11a1 1 0 00-1 1v8a1 1 0 001 1h14a1 1 0 001-1v-8a1 1 0 00-1-1zm-7 9a4 4 0 110-8 4 4 0 010 8z"></path>
+              <circle cx="18" cy="21" r="2"></circle>
+            </g>
+          </svg>
+        </button>
+
       </div>
-      
-      <button className="download-btn" onClick={() => downloadMemeImg()}>
-          <svg
-          xmlns="http://www.w3.org/2000/svg"
-          enableBackground="new 0 0 30 30"
-          version="1.1"
-          viewBox="0 0 30 30"
-          xmlSpace="preserve"
-        >
-          <path d="M6 19v-2a1 1 0 00-2 0v2a1 1 0 002 0zM10 5a1 1 0 001 1h2a1 1 0 000-2h-2a1 1 0 00-1 1zM5 14a1 1 0 001-1v-2a1 1 0 00-2 0v2a1 1 0 001 1zM23 6h1v1a1 1 0 002 0V6a2 2 0 00-2-2h-1a1 1 0 000 2zM16 5a1 1 0 001 1h2a1 1 0 000-2h-2a1 1 0 00-1 1zM7 24H6v-1a1 1 0 00-2 0v1a2 2 0 002 2h1a1 1 0 000-2zM6 7V6h1a1 1 0 000-2H6a2 2 0 00-2 2v1a1 1 0 002 0zM24 11v2.001a1 1 0 002 0V11a1 1 0 00-2 0z"></path>
-          <g>
-            <path d="M25 16h-1.764a2 2 0 01-1.789-1.106l-.171-.342a1 1 0 00-.894-.552h-4.764a.998.998 0 00-.894.553l-.171.342A2.002 2.002 0 0112.764 16H11a1 1 0 00-1 1v8a1 1 0 001 1h14a1 1 0 001-1v-8a1 1 0 00-1-1zm-7 9a4 4 0 110-8 4 4 0 010 8z"></path>
-            <circle cx="18" cy="21" r="2"></circle>
-          </g>
-        </svg>
-      </button>
 
       <p>
         API used <a href="https://imgflip.com/api">imgflip</a>
